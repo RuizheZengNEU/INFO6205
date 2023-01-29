@@ -75,7 +75,6 @@ public class Timer {
         
         pause();
         final double result = meanLapTime();
-        System.out.println(this);
         resume();
         return result;
         // END 
@@ -209,9 +208,9 @@ public class Timer {
      * @return the corresponding number of milliseconds.
      */
     private static double toMillisecs(long ticks) {
-        // FIXME by replacing the following code
+       
          return ticks*0.000001;
-        // END 
+         
     }
 
     final static LazyLogger logger = new LazyLogger(Timer.class);

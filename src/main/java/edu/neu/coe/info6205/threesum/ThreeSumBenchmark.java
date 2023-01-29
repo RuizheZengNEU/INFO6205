@@ -25,7 +25,7 @@ public class ThreeSumBenchmark {
     }
 
     public static void main(String[] args) {
-    	//new ThreeSumBenchmark(1, 250, 250).runBenchmarks();
+    	
         new ThreeSumBenchmark(100, 250, 250).runBenchmarks();
         new ThreeSumBenchmark(50, 500, 500).runBenchmarks();
         new ThreeSumBenchmark(20, 1000, 1000).runBenchmarks();
@@ -33,7 +33,6 @@ public class ThreeSumBenchmark {
         new ThreeSumBenchmark(5, 4000, 4000).runBenchmarks();
         new ThreeSumBenchmark(3, 8000, 8000).runBenchmarks();
         new ThreeSumBenchmark(2, 16000, 16000).runBenchmarks();
-        //new ThreeSumBenchmark(200, 16000, 16000).runBenchmarks();
     }
     private void benchmarkThreeSum(final String description, final Consumer<int[]> function, int n, final TimeLogger[] timeLoggers) {
     	
