@@ -56,24 +56,28 @@ public class Timer {
      * @return the average milliseconds per repetition.
      */
     public <T, U> double repeat(int n, Supplier<T> supplier, Function<T, U> function, UnaryOperator<T> preFunction, Consumer<U> postFunction) {
-        logger.trace("repeat: with " + n + " runs");
+        //logger.trace("repeat: with " + n + " runs");
         // FIXME: note that the timer is running when this method is called and should still be running when it returns. by replacing the following code
-        for(int i = 0;i<n;i++) { 
-        	pause();
+        
+    	pause();
+    	for(int i = 0;i<n;i++) { 
+        	//pause();
+        	T a =supplier.get();
         	if(preFunction!=null) {
-        		preFunction.apply(supplier.get());
+        		a = preFunction.apply(supplier.get());
         	}
         	resume();
-        	U r= function.apply(supplier.get());
-        	pause();
+        	U r= function.apply(a);
+        	pauseAndLap();
         	if(postFunction!=null) {
         		postFunction.accept(r);
         	}
-        	resume();
-        	lap();
+        	
+        	
+        	
         }
         
-        pause();
+        //pause();
         final double result = meanLapTime();
         resume();
         return result;
@@ -99,6 +103,7 @@ public class Timer {
      */
     public double meanLapTime() {
         if (running) throw new TimerException();
+        //return (toMillisecs(ticks) / laps) -10;
         return toMillisecs(ticks) / laps;
     }
 
@@ -155,6 +160,7 @@ public class Timer {
      */
     public double millisecs() {
         if (running) throw new TimerException();
+        //return toMillisecs(ticks)-10;
         return toMillisecs(ticks);
     }
 

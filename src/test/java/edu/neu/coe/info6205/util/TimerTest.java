@@ -64,10 +64,11 @@ public class TimerTest {
     @Test
     public void testLap() {
         final Timer timer = new Timer();
-        GoToSleep(TENTH, 0);
-        timer.lap();
+        GoToSleep(TENTH, 0);//
+        timer.lap();//
         GoToSleep(TENTH, 0);
         final double time = timer.stop();
+        System.out.print(timer);
         assertEquals(TENTH_DOUBLE, time, 10.0);
         assertEquals(2, run);
     }
@@ -80,6 +81,7 @@ public class TimerTest {
         GoToSleep(TENTH, 0);
         timer.resume();
         final double time = timer.stop();
+        //System.out.print(timer);
         assertEquals(TENTH_DOUBLE, time, 10.0);
         assertEquals(2, run);
     }
@@ -101,6 +103,7 @@ public class TimerTest {
             GoToSleep(HUNDREDTH, 0);
             return null;
         });
+        //System.out.print(timer);
         assertEquals(10, new PrivateMethodTester(timer).invokePrivate("getLaps"));
         assertEquals(TENTH_DOUBLE / 10, mean, 6);
         assertEquals(10, run);
@@ -111,11 +114,15 @@ public class TimerTest {
     @Test
     public void testRepeat2() {
         final Timer timer = new Timer();
-        final int zzz = 20;
+        final int zzz = 20;//
         final double mean = timer.repeat(10, () -> zzz, t -> {
             GoToSleep(t, 0);
+            //timer.pause();
+            //System.out.println(t);
+            //timer.resume();
             return null;
         });
+        //System.out.print(timer);
         assertEquals(10, new PrivateMethodTester(timer).invokePrivate("getLaps"));
         assertEquals(zzz, mean, 8.5);
         assertEquals(10, run);
@@ -134,6 +141,7 @@ public class TimerTest {
             GoToSleep(t, -1);
             return t;
         }, t -> GoToSleep(10, 1));
+        //System.out.print(timer);
         assertEquals(10, new PrivateMethodTester(timer).invokePrivate("getLaps"));
         assertEquals(zzz, mean, 6);
         assertEquals(10, run);
@@ -156,6 +164,7 @@ public class TimerTest {
             return 2*t;
         }, t -> GoToSleep(10, 1) // post-function
         );
+        //System.out.print(timer);
         assertEquals(10, new PrivateMethodTester(timer).invokePrivate("getLaps"));
         assertEquals(zzz, 20, 6);
         assertEquals(10, run);
