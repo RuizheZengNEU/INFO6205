@@ -13,6 +13,8 @@ INFO6205 Assignment 4 (WQUPC).pdf is at INFO6205/src/main/java/edu/neu/coe/info6
 
 INFO6205 Assignment 5 Parallel Sort.pdf is at INFO6205/src/main/java/edu/neu/coe/info6205/sort/par/
 
+INFO6205 Assignment 6 is at src/main/java/edu/neu/coe/info6205/sort/INFO6205 Assignment 6 Hits as time predictor().pdf
+
 There may be more page in assignment PDF the git doesnot show them all, please use "more page button" to expand page. 
 
 Have a wonderful day.
